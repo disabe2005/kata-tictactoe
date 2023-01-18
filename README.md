@@ -1,2 +1,2 @@
 # kata-tictactoe
-A simple Kata to performe Test Driven Development (TDD).
+A simple Kata to perform Test Driven Development (TDD).
