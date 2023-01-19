@@ -6,5 +6,6 @@ package com.fortis.cge.kata.model;
  */
 public enum PawnEnum {
 	X,
-	O
+	O,
+	Y; //Y represente le vide
 }
