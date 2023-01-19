@@ -13,7 +13,6 @@ import com.fortis.cge.kata.model.PositionEnum;
  * This class is a handler of some actions to manage games
  * For example to genarate a new game, initialize new  
  */
-@Component
 public class KataUtils {
 	
 	public static List<GameDraw> listGameDraw ;
