@@ -2,25 +2,32 @@ package com.fortis.cge.kata.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fortis.cge.kata.model.GameDraw;
 import com.fortis.cge.kata.model.PawnEnum;
 import com.fortis.cge.kata.model.PositionEnum;
 
-
+@ExtendWith(MockitoExtension.class)
 public class KataUtilsTest {
 	
 	@Mock
 	KataUtils kataUtilsMock;
-	
+		
 	@Test
 	public void initializeDrawTest(){
 		//Griven
@@ -68,12 +75,18 @@ public class KataUtilsTest {
 		List<GameDraw> listGameDrawPlayerTwo = new ArrayList<>();		
 		GameDraw gd1 = new GameDraw(PositionEnum.P1, "Didier", PawnEnum.X);
 		GameDraw gd2 = new GameDraw(PositionEnum.P1, "Junior", PawnEnum.O);
-				
+		Boolean result1 = Boolean.TRUE;	
+		Boolean result2 = Boolean.FALSE;	
 		//When
-									
-		//Then		
-		assertThat(when(kataUtilsMock.verifyFirstPawn(gd1, listGameDrawPlayerOne)).thenReturn(Boolean.TRUE));
-		assertThat(when(kataUtilsMock.verifyFirstPawn(gd2, listGameDrawPlayerTwo)).thenReturn(Boolean.FALSE));
+		when(kataUtilsMock.verifyFirstPawn(gd1, listGameDrawPlayerOne)).thenReturn(result1);
+		when(kataUtilsMock.verifyFirstPawn(gd2, listGameDrawPlayerTwo)).thenReturn(result2);
+		
+		//Then	
+		Boolean resultTest1 = kataUtilsMock.verifyFirstPawn(gd1, listGameDrawPlayerOne);
+		Boolean resultTest2 = kataUtilsMock.verifyFirstPawn(gd2, listGameDrawPlayerTwo);
+		
+		assertTrue(resultTest1);
+		assertFalse(resultTest2);
 	}
 	
 	@Test
@@ -85,14 +98,19 @@ public class KataUtilsTest {
 		
 		GameDraw gdToTest = new GameDraw(PositionEnum.P3, "Didier", PawnEnum.X);
 		GameDraw gdToTest1 = new GameDraw(PositionEnum.P4, "Didier", PawnEnum.X);
-		
+		Boolean result1 = Boolean.FALSE;
+		Boolean result2 = Boolean.TRUE;	
+			
 				
 		//When
-		//when(kataUtilsMock.verifyFirstPawn(gd1)).thenReturn(Boolean.TRUE);		
+		when(kataUtilsMock.verifyOccupedPosition(gdToTest, listGameDrawAllPlayers)).thenReturn(result1);
+		when(kataUtilsMock.verifyOccupedPosition(gdToTest1, listGameDrawAllPlayers)).thenReturn(result2);
 								
-		//Then		
-		assertThat(when(kataUtilsMock.verifyOccupedPosition(gdToTest, listGameDrawAllPlayers)).thenReturn(Boolean.TRUE));
-		assertThat(when(kataUtilsMock.verifyOccupedPosition(gdToTest1, listGameDrawAllPlayers)).thenReturn(Boolean.FALSE));
+		//Then	
+		Boolean resultTest1 = kataUtilsMock.verifyOccupedPosition(gdToTest, listGameDrawAllPlayers);
+		Boolean resultTest2 = kataUtilsMock.verifyOccupedPosition(gdToTest1, listGameDrawAllPlayers);
+		assertFalse(resultTest1);
+		assertTrue(resultTest2);
 	}
 	
 }
