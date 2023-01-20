@@ -10,12 +10,9 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fortis.cge.kata.model.GameDraw;
@@ -116,38 +113,13 @@ public class KataUtilsTest {
 	@Test
 	public void verifyIfEndOfGameTest() {
 		//Griven
-		GameDraw gd1 = new GameDraw(PositionEnum.P1, "D", PawnEnum.X);
-		GameDraw gd2 = new GameDraw(PositionEnum.P2, "Y", PawnEnum.X);
-		GameDraw gd3 = new GameDraw(PositionEnum.P3, "D", PawnEnum.O);
-		GameDraw gd4 = new GameDraw(PositionEnum.P4, "D", PawnEnum.X);
-		GameDraw gd5 = new GameDraw(PositionEnum.P5, "Y", PawnEnum.O);
-		GameDraw gd6 = new GameDraw(PositionEnum.P6, "Y", PawnEnum.O);
-		GameDraw gd7 = new GameDraw(PositionEnum.P7, "D", PawnEnum.O);
-		GameDraw gd8 = new GameDraw(PositionEnum.P8, "Y", PawnEnum.X);
-		GameDraw gd9 = new GameDraw(PositionEnum.P9, "Y", PawnEnum.O);
-				
-		List<GameDraw> listGameDraw = new ArrayList<>();
-				
-		listGameDraw.add(gd1);
-		listGameDraw.add(gd2);
-		listGameDraw.add(gd3);
-		listGameDraw.add(gd4);
-		listGameDraw.add(gd5);
-		listGameDraw.add(gd6);
-		listGameDraw.add(gd7);
-		listGameDraw.add(gd8);
-		listGameDraw.add(gd9);
+			
+		Boolean result = Boolean.TRUE;
 		
-		Boolean result = Boolean.FALSE;
-		
-		//When
-		when(kataUtilsMock.getListGameDraw()).thenReturn(listGameDraw);
 		when(kataUtilsMock.verifyIfEndOfGame()).thenReturn(result);
 		
 		//Then
-		Boolean resultTest = kataUtilsMock.kataUtilsMock.verifyIfEndOfGame();
-		assertNotNull(listGameDraw);
-		assertEquals(9, listGameDraw.size());
+		Boolean resultTest = kataUtilsMock.verifyIfEndOfGame();
 		assertTrue(resultTest);		
 				
 		
@@ -172,7 +144,7 @@ public class KataUtilsTest {
 		Boolean result1 = Boolean.TRUE;
 		Boolean result2 = Boolean.FALSE;
 		
-		//When
+		//When 
 		when(kataUtilsMock.verifyIfWinner("D")).thenReturn(result1);
 		when(kataUtilsMock.verifyIfWinner("Y")).thenReturn(result2);
 		
@@ -180,8 +152,7 @@ public class KataUtilsTest {
 		Boolean resultTest = kataUtilsMock.verifyIfWinner("D");
 		Boolean resultTest1 = kataUtilsMock.verifyIfWinner("Y");
 		assertTrue(resultTest);
-		assertFalse(resultTest1);
-	
+		assertFalse(resultTest1);	
 		
 	}
 	

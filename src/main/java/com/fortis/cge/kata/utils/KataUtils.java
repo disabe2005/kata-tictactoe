@@ -13,11 +13,12 @@ import com.fortis.cge.kata.model.PositionEnum;
  * This class is a handler of some actions to manage games
  * For example to genarate a new game, initialize new  
  */
+@Component
 public class KataUtils {
 	
-	public static List<GameDraw> listGameDraw ;
-	public static List<GameDraw> listGameDrawPlayerOne ;
-	public static List<GameDraw> listGameDrawPlayerTwo ;
+	public static List<GameDraw> listGameDraw = new ArrayList<>();
+	public static List<GameDraw> listGameDrawPlayerOne = new ArrayList<>();
+	public static List<GameDraw> listGameDrawPlayerTwo = new ArrayList<>();
 
 	public List<GameDraw> initializeDraw() {
 		GameDraw gd1 = new GameDraw(PositionEnum.P1, " ", PawnEnum.Y);
@@ -29,8 +30,7 @@ public class KataUtils {
 		GameDraw gd7 = new GameDraw(PositionEnum.P7, " ", PawnEnum.Y);
 		GameDraw gd8 = new GameDraw(PositionEnum.P8, " ", PawnEnum.Y);
 		GameDraw gd9 = new GameDraw(PositionEnum.P9, " ", PawnEnum.Y);
-		
-		//List<GameDraw> listGameDraw = new ArrayList<>();
+		 
 		listGameDrawPlayerOne = new ArrayList<>();
 		listGameDrawPlayerTwo = new ArrayList<>();
 		listGameDraw.add(gd1);
@@ -65,5 +65,133 @@ public class KataUtils {
 				
 		return result;
 	}
+
+	public Boolean verifyIfWinner(String playerName) {
+		
+			if(
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(1).getPlayerName().equals(playerName) && listGameDraw.get(1).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(2).getPlayerName().equals(playerName) && listGameDraw.get(2).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(1).getPlayerName().equals(playerName) && listGameDraw.get(1).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(2).getPlayerName().equals(playerName) && listGameDraw.get(2).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+			
+			if(
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+			if(
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(8).getPlayerName().equals(playerName) && listGameDraw.get(8).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(0).getPlayerName().equals(playerName) && listGameDraw.get(0).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(8).getPlayerName().equals(playerName) && listGameDraw.get(8).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+			
+			if(
+					 ( (listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(5).getPlayerName().equals(playerName) && listGameDraw.get(5).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(5).getPlayerName().equals(playerName) && listGameDraw.get(5).getPawn() == PawnEnum.O )) 
+						
+			  ) 
+			{
+				return true;
+			}
+			
+			if(
+					 ( (listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(5).getPlayerName().equals(playerName) && listGameDraw.get(5).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(5).getPlayerName().equals(playerName) && listGameDraw.get(5).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+			
+			if(
+					 ( (listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(7).getPlayerName().equals(playerName) && listGameDraw.get(7).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(8).getPlayerName().equals(playerName) && listGameDraw.get(8).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(7).getPlayerName().equals(playerName) && listGameDraw.get(7).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(8).getPlayerName().equals(playerName) && listGameDraw.get(8).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+			if(
+					 ( (listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.X )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.X )  &&
+					 ( listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.X )) 
+				  ||
+					 ( (listGameDraw.get(6).getPlayerName().equals(playerName) && listGameDraw.get(6).getPawn() == PawnEnum.O )     &&
+					 ( listGameDraw.get(4).getPlayerName().equals(playerName) && listGameDraw.get(4).getPawn() == PawnEnum.O )  &&
+					 ( listGameDraw.get(3).getPlayerName().equals(playerName) && listGameDraw.get(3).getPawn() == PawnEnum.O )) 
+						
+				) 
+			{
+				return true;
+			}
+		
+		return false;
+	}
+
+
+	public Boolean verifyIfEndOfGame() {
+		Boolean result = true;
+		for(GameDraw g : listGameDraw)
+		if(g.getPawn() == PawnEnum.Y) result = false;
+		
+		return result;
+	}
+
+	public void draw(PositionEnum p, String playerName, PawnEnum pa) {
+		List<GameDraw> listeTochange = new ArrayList<>();
+		listGameDraw.forEach(item -> {
+			if(item.getPosition() != p) {
+				listeTochange.add(item);
+			}else {
+				listeTochange.add(new GameDraw(p, playerName, pa));
+			}
+			
+		});
+		
+		listGameDraw = new ArrayList<>();
+		listGameDraw.addAll(listeTochange);
+		
+	}
+	
+
 
 }
