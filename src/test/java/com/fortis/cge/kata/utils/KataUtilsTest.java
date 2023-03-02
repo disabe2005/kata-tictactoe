@@ -1,10 +1,6 @@
 package com.fortis.cge.kata.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -56,12 +52,12 @@ public class KataUtilsTest {
 		
 		//Then
 		List<GameDraw> listGameDrawTest = kataUtilsMock.initializeDraw();
-		assertNotNull(listGameDrawTest);
-		assertNotNull(listGameDrawPlayerOne);
-		assertNotNull(listGameDrawPlayerTwo);
-		assertEquals(0, listGameDrawPlayerOne.size());
-		assertEquals(0, listGameDrawPlayerTwo.size());
-		assertEquals(9, listGameDrawTest.size());
+		assertThat(listGameDrawTest).isNotNull();
+		assertThat(listGameDrawPlayerOne).isNotNull();
+		assertThat(listGameDrawPlayerTwo).isNotNull();
+		assertThat(listGameDrawPlayerOne.size()).isEqualTo(0);
+		assertThat(listGameDrawPlayerTwo.size()).isEqualTo(0);
+		assertThat(listGameDrawTest.size()).isEqualTo(9);
 		
 	}
 	
@@ -82,8 +78,8 @@ public class KataUtilsTest {
 		Boolean resultTest1 = kataUtilsMock.verifyFirstPawn(gd1, listGameDrawPlayerOne);
 		Boolean resultTest2 = kataUtilsMock.verifyFirstPawn(gd2, listGameDrawPlayerTwo);
 		
-		assertTrue(resultTest1);
-		assertFalse(resultTest2);
+		assertThat(resultTest1).isTrue();
+		assertThat(resultTest2).isFalse();
 	}
 	
 	@Test
@@ -106,8 +102,8 @@ public class KataUtilsTest {
 		//Then	
 		Boolean resultTest1 = kataUtilsMock.verifyOccupedPosition(gdToTest, listGameDrawAllPlayers);
 		Boolean resultTest2 = kataUtilsMock.verifyOccupedPosition(gdToTest1, listGameDrawAllPlayers);
-		assertFalse(resultTest1);
-		assertTrue(resultTest2);
+		assertThat(resultTest1).isFalse();
+		assertThat(resultTest2).isTrue();
 	}
 	
 	@Test
@@ -120,7 +116,7 @@ public class KataUtilsTest {
 		
 		//Then
 		Boolean resultTest = kataUtilsMock.verifyIfEndOfGame();
-		assertTrue(resultTest);		
+		assertThat(resultTest).isTrue();		
 				
 		
 	}
@@ -151,8 +147,8 @@ public class KataUtilsTest {
 		//Then
 		Boolean resultTest = kataUtilsMock.verifyIfWinner("D");
 		Boolean resultTest1 = kataUtilsMock.verifyIfWinner("Y");
-		assertTrue(resultTest);
-		assertFalse(resultTest1);	
+		assertThat(resultTest).isTrue();
+		assertThat(resultTest1).isFalse();	
 		
 	}
 	
