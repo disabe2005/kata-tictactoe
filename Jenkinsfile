@@ -1,10 +1,13 @@
 //def mvnHome = tool 'maven'
 pipeline {
 agent any  
+  environment {
+    MVN_HOME = tool 'maven'
+    }
   stages{
     stage('Build'){  
       steps{
-          bat("C:\apache-maven-3.8.7\bin\mvn" -Dmaven.test.failure.ignore clean install/)
+          bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean install/)
         } 
       } 
     stage('Result'){
